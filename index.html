@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WALT — Meet Your New Crew Member</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+--navy: #0f1e2e;
+--steel: #1c3048;
+--blue: #2563b0;
+--sky: #3b82f6;
+--amber: #f59e0b;
+--amber-light: #fbbf24;
+--cream: #f8f4ee;
+--warm-white: #fdfaf5;
+--muted: #8a9bb0;
+--border: rgba(255,255,255,0.08);
+}
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(--cream);
+color: var(--navy);
+min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+background: var(--navy);
+padding: 0;
+position: relative;
+overflow: hidden;
+}
+
+.header-texture {
+position: absolute; inset: 0;
+background-image:
+repeating-linear-gradient(
+-45deg,
+transparent,
+transparent 20px,
+rgba(255,255,255,0.015) 20px,
+rgba(255,255,255,0.015) 21px
+);
+}
+
+.header-inner {
+position: relative;
+max-width: 860px;
+margin: 0 auto;
+padding: 56px 40px 48px;
+display: grid;
+grid-template-columns: 1fr auto;
+gap: 32px;
+align-items: end;
+}
+
+.wordmark {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 88px;
+color: #fff;
+letter-spacing: 6px;
+line-height: 1;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.wordmark-dot {
+width: 14px;
+height: 14px;
+border-radius: 50%;
+background: var(--amber);
+flex-shrink: 0;
+margin-bottom: 6px;
+}
+
+.tagline {
+font-size: 18px;
+color: rgba(255,255,255,0.65);
+font-weight: 300;
+letter-spacing: 0.02em;
+margin-top: 10px;
+line-height: 1.5;
+}
+
+.header-badge {
+background: var(--amber);
+color: var(--navy);
+font-family: ‘DM Mono’, monospace;
+font-size: 13px;
+font-weight: 500;
+padding: 10px 18px;
+border-radius: 4px;
+white-space: nowrap;
+letter-spacing: 0.05em;
+align-self: center;
+}
+
+/* ── HERO STATEMENT ── */
+.hero {
+background: var(--steel);
+padding: 44px 40px;
+border-bottom: 3px solid var(--amber);
+}
+
+.hero-inner {
+max-width: 860px;
+margin: 0 auto;
+}
+
+.hero h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 38px;
+color: #fff;
+letter-spacing: 2px;
+line-height: 1.15;
+margin-bottom: 14px;
+}
+
+.hero h2 em {
+color: var(--amber-light);
+font-style: normal;
+}
+
+.hero p {
+font-size: 16px;
+color: rgba(255,255,255,0.6);
+font-weight: 300;
+max-width: 560px;
+line-height: 1.7;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+max-width: 860px;
+margin: 0 auto;
+padding: 48px 40px;
+}
+
+/* ── PAIN SECTION ── */
+.pain-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 16px;
+margin-bottom: 52px;
+}
+
+.pain-card {
+background: var(--navy);
+border-radius: 8px;
+padding: 24px 22px;
+position: relative;
+overflow: hidden;
+}
+
+.pain-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: var(--blue);
+}
+
+.pain-icon {
+font-size: 26px;
+margin-bottom: 12px;
+display: block;
+}
+
+.pain-card h3 {
+font-size: 13px;
+font-weight: 600;
+color: var(--muted);
+letter-spacing: 0.1em;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.pain-card p {
+font-size: 14px;
+color: rgba(255,255,255,0.55);
+line-height: 1.6;
+font-weight: 300;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--blue);
+margin-bottom: 12px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.section-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: rgba(0,0,0,0.1);
+max-width: 60px;
+}
+
+.section-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 32px;
+letter-spacing: 2px;
+color: var(--navy);
+margin-bottom: 20px;
+}
+
+/* ── HOW IT WORKS ── */
+.how-section {
+margin-bottom: 52px;
+}
+
+.how-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 14px;
+}
+
+.how-card {
+background: #fff;
+border: 1px solid rgba(0,0,0,0.08);
+border-radius: 8px;
+padding: 22px 24px;
+display: flex;
+gap: 16px;
+align-items: flex-start;
+transition: box-shadow 0.2s;
+}
+
+.how-card:hover {
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.how-number {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 36px;
+color: var(--amber);
+line-height: 1;
+flex-shrink: 0;
+width: 36px;
+}
+
+.how-card h3 {
+font-size: 15px;
+font-weight: 600;
+color: var(--navy);
+margin-bottom: 5px;
+}
+
+.how-card p {
+font-size: 13.5px;
+color: #5a6a7e;
+line-height: 1.6;
+font-weight: 300;
+}
+
+/* ── PILLARS ── */
+.pillars-section {
+margin-bottom: 52px;
+}
+
+.pillars-row {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 12px;
+}
+
+.pillar {
+background: var(--navy);
+border-radius: 8px;
+padding: 24px 18px 20px;
+text-align: center;
+position: relative;
+}
+
+.pillar-icon {
+font-size: 28px;
+margin-bottom: 10px;
+display: block;
+}
+
+.pillar h3 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 20px;
+letter-spacing: 1.5px;
+color: #fff;
+margin-bottom: 6px;
+}
+
+.pillar p {
+font-size: 12.5px;
+color: rgba(255,255,255,0.45);
+line-height: 1.5;
+}
+
+.pillar.featured {
+background: var(--blue);
+}
+
+.pillar.featured p {
+color: rgba(255,255,255,0.65);
+}
+
+/* ── VOICE DEMO ── */
+.voice-section {
+background: var(--navy);
+border-radius: 12px;
+padding: 36px 36px;
+margin-bottom: 52px;
+position: relative;
+overflow: hidden;
+}
+
+.voice-section::before {
+content: ‘’;
+position: absolute;
+top: -60px; right: -60px;
+width: 200px; height: 200px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(37,99,176,0.3) 0%, transparent 70%);
+}
+
+.voice-section .section-label { color: var(--amber); }
+.voice-section .section-label::after { background: rgba(255,255,255,0.1); }
+.voice-section .section-title { color: #fff; }
+
+.voice-examples {
+display: flex;
+flex-direction: column;
+gap: 14px;
+}
+
+.voice-bubble {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 8px;
+padding: 16px 20px;
+display: flex;
+gap: 14px;
+align-items: flex-start;
+}
+
+.voice-mic {
+font-size: 18px;
+flex-shrink: 0;
+margin-top: 1px;
+}
+
+.voice-bubble .you {
+font-family: ‘DM Mono’, monospace;
+font-size: 13px;
+color: var(--amber-light);
+margin-bottom: 4px;
+display: block;
+}
+
+.voice-bubble .said {
+font-size: 14.5px;
+color: rgba(255,255,255,0.85);
+font-weight: 400;
+font-style: italic;
+line-height: 1.5;
+}
+
+.voice-bubble .result {
+font-size: 12.5px;
+color: rgba(255,255,255,0.4);
+margin-top: 5px;
+display: block;
+}
+
+/* ── PRICING ── */
+.pricing-section {
+margin-bottom: 52px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+align-items: center;
+}
+
+.price-box {
+background: var(--amber);
+border-radius: 12px;
+padding: 36px 32px;
+text-align: center;
+}
+
+.price-amount {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 80px;
+color: var(--navy);
+line-height: 1;
+letter-spacing: 2px;
+}
+
+.price-period {
+font-size: 16px;
+font-weight: 500;
+color: rgba(15,30,46,0.65);
+margin-top: 4px;
+}
+
+.price-note {
+font-size: 13px;
+color: rgba(15,30,46,0.55);
+margin-top: 10px;
+}
+
+.price-features {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.price-feature {
+display: flex;
+gap: 12px;
+align-items: flex-start;
+}
+
+.check {
+width: 22px;
+height: 22px;
+background: var(--blue);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+margin-top: 1px;
+}
+
+.check::after {
+content: ‘✓’;
+color: white;
+font-size: 12px;
+font-weight: 700;
+}
+
+.price-feature p {
+font-size: 14.5px;
+color: var(--navy);
+line-height: 1.5;
+}
+
+/* ── FEEDBACK CTA ── */
+.feedback-section {
+background: var(--steel);
+border-radius: 12px;
+padding: 40px 40px;
+border-left: 5px solid var(--amber);
+margin-bottom: 48px;
+}
+
+.feedback-section .section-label { color: var(--amber); }
+.feedback-section .section-label::after { background: rgba(255,255,255,0.1); }
+
+.feedback-section h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+letter-spacing: 2px;
+color: #fff;
+margin-bottom: 14px;
+}
+
+.feedback-section p {
+font-size: 14.5px;
+color: rgba(255,255,255,0.6);
+line-height: 1.7;
+margin-bottom: 20px;
+max-width: 500px;
+}
+
+.questions-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.question-item {
+display: flex;
+gap: 12px;
+align-items: flex-start;
+}
+
+.q-num {
+font-family: ‘DM Mono’, monospace;
+font-size: 12px;
+color: var(--amber);
+font-weight: 500;
+flex-shrink: 0;
+margin-top: 2px;
+width: 20px;
+}
+
+.question-item p {
+font-size: 14px;
+color: rgba(255,255,255,0.75);
+margin: 0;
+line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+footer {
+background: var(--navy);
+padding: 28px 40px;
+text-align: center;
+}
+
+footer p {
+font-size: 13px;
+color: rgba(255,255,255,0.3);
+font-weight: 300;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+.header-inner { grid-template-columns: 1fr; padding: 40px 24px 32px; }
+.wordmark { font-size: 64px; }
+.hero { padding: 36px 24px; }
+main { padding: 36px 24px; }
+.pain-grid { grid-template-columns: 1fr; }
+.how-grid { grid-template-columns: 1fr; }
+.pillars-row { grid-template-columns: repeat(2,1fr); }
+.pricing-section { grid-template-columns: 1fr; }
+.voice-section { padding: 28px 24px; }
+.feedback-section { padding: 28px 24px; }
+}
+
+@media print {
+body { background: white; }
+.pain-card, .pillar, .voice-section, .feedback-section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <div class="header-texture"></div>
+  <div class="header-inner">
+    <div>
+      <div class="wordmark">WALT<span class="wordmark-dot"></span></div>
+      <div class="tagline">The admin assistant built for the trades.<br>Works while you work.</div>
+    </div>
+    <div class="header-badge">$40 / MONTH — FLAT</div>
+  </div>
+</header>
+
+<!-- HERO STATEMENT -->
+
+<div class="hero">
+  <div class="hero-inner">
+    <h2>You didn't go into the trades<br>to do <em>paperwork.</em></h2>
+    <p>WALT is a voice-first app that tracks your jobs, customers, expenses, and mileage — automatically, in the background, while you're working. Talk to it like a crew member. It handles the rest.</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- PAIN POINTS -->
+
+  <div class="pain-grid">
+    <div class="pain-card">
+      <span class="pain-icon">📱</span>
+      <h3>App overload</h3>
+      <p>Mileage app, receipt scanner, invoicing tool, notes app — all separate, all a headache.</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">🧾</span>
+      <h3>Lost money</h3>
+      <p>Missed expenses, unlogged mileage, and late invoices quietly drain hundreds every month.</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">⏱️</span>
+      <h3>Wasted evenings</h3>
+      <p>Hours spent on admin that should take minutes — after a full day on the job.</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="how-section">
+    <div class="section-label">How it works</div>
+    <div class="section-title">Built for how you actually work</div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-number">1</div>
+        <div>
+          <h3>Talk to WALT on the way to a job</h3>
+          <p>Create a job, add notes, and log a customer by voice before you even step out of the truck.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-number">2</div>
+        <div>
+          <h3>Snap a photo of any receipt</h3>
+          <p>WALT reads it and logs the expense to the right job automatically. Home Depot emails get pulled in too.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-number">3</div>
+        <div>
+          <h3>Mileage tracks itself</h3>
+          <p>GPS runs in the background. At end of day, WALT asks two quick questions to confirm business trips. That's it.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-number">4</div>
+        <div>
+          <h3>Send an invoice in 30 seconds</h3>
+          <p>Say "send invoice to Johnson" and WALT builds it from the job — labor, materials, everything — and sends it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR PILLARS -->
+
+  <section class="pillars-section">
+    <div class="section-label">What WALT tracks</div>
+    <div class="section-title">Four things. One app.</div>
+    <div class="pillars-row">
+      <div class="pillar featured">
+        <span class="pillar-icon">🔨</span>
+        <h3>Jobs</h3>
+        <p>The core of everything. Every expense, customer, and mile links back to a job.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">👤</span>
+        <h3>Customers</h3>
+        <p>Names, contacts, history, notes — all attached to the jobs you did for them.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💳</span>
+        <h3>Expenses</h3>
+        <p>Receipts by photo, emails auto-imported, everything categorized for tax time.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🚛</span>
+        <h3>Mileage</h3>
+        <p>Background tracking with a quick voice check-in. IRS-ready at year end.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE DEMO -->
+
+  <section class="voice-section">
+    <div class="section-label">Voice in action</div>
+    <div class="section-title">Say it. Done.</div>
+    <div class="voice-examples">
+      <div class="voice-bubble">
+        <span class="voice-mic">🎙️</span>
+        <div>
+          <span class="you">YOU SAY</span>
+          <span class="said">"Start job, fence repair, Martinez property, 14 Oak Lane"</span>
+          <span class="result">→ Job created, customer linked, timestamp logged, GPS noted.</span>
+        </div>
+      </div>
+      <div class="voice-bubble">
+        <span class="voice-mic">🎙️</span>
+        <div>
+          <span class="you">YOU SAY</span>
+          <span class="said">"Add expense, concrete mix, $87, Home Depot, Martinez fence job"</span>
+          <span class="result">→ Expense logged, category set, receipt flag cleared.</span>
+        </div>
+      </div>
+      <div class="voice-bubble">
+        <span class="voice-mic">🎙️</span>
+        <div>
+          <span class="you">YOU SAY</span>
+          <span class="said">"Send invoice to Martinez, fence job, add 4 hours labor at 85"</span>
+          <span class="result">→ Invoice built from job data, totaled, and sent. Payment tracked.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+
+  <section>
+    <div class="section-label">Pricing</div>
+    <div class="section-title">No tiers. No surprises.</div>
+    <div class="pricing-section">
+      <div class="price-box">
+        <div class="price-amount">$40</div>
+        <div class="price-period">per month</div>
+        <div class="price-note">Cancel any time. No annual contract.</div>
+      </div>
+      <div class="price-features">
+        <div class="price-feature"><div class="check"></div><p>Unlimited jobs, customers & expenses</p></div>
+        <div class="price-feature"><div class="check"></div><p>Voice interface — always on</p></div>
+        <div class="price-feature"><div class="check"></div><p>Background mileage tracking</p></div>
+        <div class="price-feature"><div class="check"></div><p>Receipt photo + email scanning</p></div>
+        <div class="price-feature"><div class="check"></div><p>Invoices & proposals by voice</p></div>
+        <div class="price-feature"><div class="check"></div><p>Year-end tax export (IRS-ready)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK CTA -->
+
+  <section class="feedback-section">
+    <div class="section-label">We're asking for your honest take</div>
+    <h2>We built this for people like you.<br>Tell us if we got it right.</h2>
+    <p>WALT is in development and we want real contractor feedback before we build anything else. No sales pitch — just three honest questions:</p>
+    <div class="questions-list">
+      <div class="question-item">
+        <span class="q-num">01</span>
+        <p>Does this actually solve a problem you have? What did we get wrong?</p>
+      </div>
+      <div class="question-item">
+        <span class="q-num">02</span>
+        <p>Would you pay $40 a month for this — or does that feel too high, too low?</p>
+      </div>
+      <div class="question-item">
+        <span class="q-num">03</span>
+        <p>The voice interface is the core idea. Does that make sense, or would you rather just use your phone the normal way?</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>WALT — Early Concept Preview &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; Not for distribution</p>
+</footer>
+
+</body>
+</html>
